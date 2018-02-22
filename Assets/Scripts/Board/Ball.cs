@@ -14,6 +14,7 @@ public class Ball : MonoBehaviour {
 	private List<Vector3> positions = null;
 	private int shrinkingPositionCount = 0;
 	private Tween shrinkLastPosition = null;
+    public RuntimeSet balls;
 
 	public event DelegateTypes.VoidGameObj Died;
 
@@ -22,6 +23,8 @@ public class Ball : MonoBehaviour {
 		DieLayer = LayerMask.NameToLayer ("Die");
 
 		line = GetComponent<LineRenderer> ();
+
+        balls.Add(gameObject);
 	}
 
 	public void Launching() {
@@ -170,6 +173,8 @@ public class Ball : MonoBehaviour {
 	void OnDestroy() {
 		if (shrinkLastPosition != null)
 			shrinkLastPosition.Kill ();
+
+        balls.Remove(gameObject);
 	}
 
 	private void Die() {

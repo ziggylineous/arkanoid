@@ -92,6 +92,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 3
   MaxPositions: 10
+  balls: {fileID: 11400000, guid: 6a38995065b8f49d587238c96b44c6ad, type: 2}
 --- !u!120 &120456872556253152
 LineRenderer:
   m_ObjectHideFlags: 1

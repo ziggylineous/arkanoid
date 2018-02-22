@@ -60,6 +60,28 @@ public abstract class BaseBlock : MonoBehaviour {
         GameObjectPool.Despawn(particles.gameObject);
     }
 
+    public void DelayedActivate(float delay) {
+        CancelInvoke("Deactivate");
+        Invoke("Activate", delay);
+    }
+
+    public void DelayedDeactivate(float delay) {
+        CancelInvoke("Activate");
+        Invoke("Deactivate", delay);
+    }
+
+    public virtual void Activate() {
+        gameObject.SetActive(true);
+    }
+
+    public virtual void Deactivate() {
+        gameObject.SetActive(false);
+    }
+
+    public void AnimSetActive(int intBool) {
+        gameObject.SetActive(intBool == 1);
+    }
+
 	private static GameObject blockPartPrefab = null;
 
 	public void BreakInPieces() {
@@ -163,4 +185,8 @@ public abstract class BaseBlock : MonoBehaviour {
 			material.DOFade (0.0f, 1.0f).SetEase(Ease.OutQuart);
 		}
 	}
+
+    protected void OnDestroy() {
+        CancelInvoke();
+    }
 }

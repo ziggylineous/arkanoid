@@ -61,7 +61,7 @@ public class Ship : MonoBehaviour {
 
 		if (ballsLeft > 0) {
 			--ballsLeft;
-			Debug.Log ("BallDieds, " + ballsLeft.ToString () + " balls left");
+			//Debug.Log ("BallDieds, " + ballsLeft.ToString () + " balls left");
 			BallsLeftChanged (ballsLeft);
 			flyingBalls.Remove (ball);
 
